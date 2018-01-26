@@ -295,7 +295,7 @@ alias mv='mv -i'
 
 alias g++='g++ -std=c++11 main.cpp'
 alias git_tree='git log --graph --pretty=oneline --abbrev-commit'
-alias mapc='/Users/HsaSheep/CLion/MouseMapDataCheck/MouseMapDataCheck'
+alias mapc='~/CLion/MouseMapDataCheck/MouseMapDataCheck'
 alias serial='screen /dev/cu.usbmodem*'
 
 echo --- zshrc -- oh_my_zsh_zshrc
