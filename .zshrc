@@ -1,10 +1,14 @@
+echo --- Start zshrc
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:/Applications/CMake.app/Contents/bin:/usr/local/devkitARM/bin:/Library/TeX/texbin:$PATH
+echo --- zshrc -- path
+export PATH=$HOME/bin:/usr/local/bin:/usr/local/devkitARM/bin:/Library/TeX/texbin:/usr/local/arm-cs-tools/bin:$PATH
 
 ### zplug
+echo --- zshrc -- zplug
 #source ~/.zplug/init.zsh
 export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
+zplug 'zsh-users/zsh-autosuggestions'
 zplug 'zsh-users/zsh-completions'
 zplug 'zsh-users/zaw'
 zplug 'zsh-users/zsh-syntax-highlighting', defer:2
@@ -20,6 +24,7 @@ fi
 
 zplug load
 
+echo --- zshrc -- setting
 ### emacs 風キーバインド
 #bindkey -e
 
@@ -194,6 +199,7 @@ function zaw-src-gitdir-cd () {
 
 zaw-register-src -n gitdir zaw-src-gitdir
 
+echo --- zshrc -- aliass
 alias '..'='cd ..'
 alias -g ...='../..'
 alias -g ....='../../..'
@@ -225,10 +231,60 @@ export LSCOLORS=gxfxxxxxcxxxxxxxxxgxgx
 export LS_COLORS='di=01;36:ln=01;35:ex=01;32'
 zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
 
+echo --- zshrc -- httpOpener
+# --------------------------------------
+# https open from terminal
+# --------------------------------------
+https(){
+    if [ $(echo $1 | egrep "^-[cfs]$") ]; then
+        local opt="$1"
+        shift
+    fi
+    local url="https://${*// /+}"
+    local app="/Applications"
+    local g="${app}/Google Chrome.app"
+    local f="${app}/Firefox.app"
+    local s="${app}/Safari.app"
+    local Fluid="${app}/Fluid browser.app"
+    case ${opt} in
+        "-g")   open "${url}" -a "$g";;
+        "-f")   open "${url}" -a "$f";;
+        "-s")   open "${url}" -a "$s";;
+        "-F")   open "${url}" -a "$Fluid";;
+        *)      open "${url}";;
+    esac
+}
+
+echo --- zshrc -- googleOpener
+# --------------------------------------
+# Google search from terminal
+# --------------------------------------
+google(){
+    if [ $(echo $1 | egrep "^-[cfs]$") ]; then
+        local opt="$1"
+        shift
+    fi
+    local url="https://www.google.co.jp/search?q=${*// /+}"
+    local app="/Applications"
+    local g="${app}/Google Chrome.app"
+    local f="${app}/Firefox.app"
+    local s="${app}/Safari.app"
+    local Fluid="${app}/Fluid browser.app"
+    case ${opt} in
+        "-g")   open "${url}" -a "$g";;
+        "-f")   open "${url}" -a "$f";;
+        "-s")   open "${url}" -a "$s";;
+        "-F")   open "${url}" -a "$Fluid";;
+        *)      open "${url}";;
+    esac
+}
+
+
+echo --- zshrc -- aliass2
 # alias
-#alias vi=vim # vi で vim 起動
+alias vi=vim # vi で vim 起動
 #alias vi='vim -u NONE --noplugin'
-alias vi='nvim'
+alias vim='nvim'
 alias ls='ls -F -G'
 #alias ls='ls -al'
 alias la='ls -lhA'
@@ -242,4 +298,5 @@ alias git_tree='git log --graph --pretty=oneline --abbrev-commit'
 alias mapc='/Users/HsaSheep/CLion/MouseMapDataCheck/MouseMapDataCheck'
 alias serial='screen /dev/cu.usbmodem*'
 
+echo --- zshrc -- oh_my_zsh_zshrc
 source ~/.oh_my_zsh_zshrc

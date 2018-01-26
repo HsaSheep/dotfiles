@@ -46,4 +46,6 @@ set number
 " Mac専用 Clipboardとyank(vimのクリップボード的な)を共有
 set clipboard=unnamed
 
+" Colorrrrrrrrrrrrrrrrrrrrrr
+:syntax on
 
