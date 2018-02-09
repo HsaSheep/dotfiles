@@ -1,7 +1,9 @@
-# dotfiles
+# dotfiles #
 
-Step
+### Steps ###
 
-01   :   Clone Home Dir(~/)
-02   :   ~/dotfiles/dotfilesLink.sh
-03   :   Check on zsh or bash.
+1. Clone Home Dir(~/)
+
+1. ~/dotfiles/dotfilesLink.sh
+
+1. Check on zsh or bash.
